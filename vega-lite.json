@@ -8,7 +8,7 @@
     //Countries
     {
       "data": {
-        "url": "https://raw.githubusercontent.com/Christina1508/Christina_FIT3179/main/json_map.json",
+        "url": "https://raw.githubusercontent.com/Christina1508/Christina_FIT3179/main/json_map.topojson",
         "format": {
           "type": "topojson",
           "feature": "ne_110m_admin_0_countries"
@@ -24,7 +24,7 @@
     //States
     {
       "data": {
-        "url": "https://raw.githubusercontent.com/Christina1508/Christina_FIT3179/main/json_map.json",
+        "url": "https://raw.githubusercontent.com/Christina1508/Christina_FIT3179/main/json_map.topojson",
         "format": {
           "type": "topojson",
           "feature": "ne_110m_admin_1_states_provinces"
@@ -83,7 +83,7 @@
     //Graticules
     {
       "data": {
-        "url": "https://raw.githubusercontent.com/Christina1508/Christina_FIT3179/main/json_map.json",
+        "url": "https://raw.githubusercontent.com/Christina1508/Christina_FIT3179/main/json_map.topojson",
         "format": {"type": "topojson", "feature": "ne_110m_graticules_5"}
       },
       "mark": {"type": "geoshape", "fill": "clear", "strokeOpacity": 0.3, "stroke": "lightslategray"}
