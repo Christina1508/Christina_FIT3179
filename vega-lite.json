@@ -5,7 +5,7 @@
   "title": "Unemployment in America",
   "projection": {"type": "equirectangular"},
   "layer": [
-    //Countries
+     
     {
       "data": {
         "url": "https://raw.githubusercontent.com/Christina1508/Christina_FIT3179/main/json_map.topojson",
@@ -21,7 +21,7 @@
       }
     },
 
-    //States
+     
     {
       "data": {
         "url": "https://raw.githubusercontent.com/Christina1508/Christina_FIT3179/main/json_map.topojson",
@@ -80,7 +80,7 @@
       ]
     },
 
-    //Graticules
+   
     {
       "data": {
         "url": "https://raw.githubusercontent.com/Christina1508/Christina_FIT3179/main/json_map.topojson",
