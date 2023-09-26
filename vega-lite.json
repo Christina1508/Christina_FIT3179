@@ -58,8 +58,8 @@
               "type": "quantitative",
               "scale": {
                 "type": "linear",
-                "scheme": "purpleblue",
-                "domain": [0, 1, 2, 3, 4, 5, 7]
+                "scheme": "bluepurple",
+                "domain": [0, 5, 6]
               },
               "title": "% of Unemployed Population"
             },
