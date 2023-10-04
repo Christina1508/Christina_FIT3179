@@ -1,9 +1,9 @@
-﻿State,Year,Arrivals,Departures
-New South Wales,2021,43.55%,47.38%
-Victoria,2021,23.62%,26.64%
-Queensland,2021,20.46%,17.61%
-Western Australia,2021,5.79%,1.58%
-South Australia,2021,3.17%,5.58%
-Tasmania,2021,0.31%,0.31%
-Australian Capital Territory,2021,0.05%,0.88%
-Northern Territory,2021,3.03%,0.00%
+﻿State,Arrivals,Departures
+New South Wales,0.4355,0.4738
+Victoria,0.2362,0.2664
+Queensland,0.2046,0.1761
+Western Australia,0.0579,0.0158
+South Australia,0.0317,0.0558
+Tasmania,0.0031,0.0031
+Australian Capital Territory,0.0005,0.0088
+Northern Territory,0.0303,0
