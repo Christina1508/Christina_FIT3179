@@ -7,7 +7,7 @@
   "layer": [
     {
       "data": {
-        "url": "https://raw.githubusercontent.com/Christina1508/Christina_FIT3179/main/mapshaper.topojson",
+        "url": "mapshaper.topojson",
         "format": {"type": "topojson", "feature": "ne_10m_admin_1_states_provinces"}
       },
 
@@ -15,7 +15,7 @@
         {
           "lookup": "properties.name", 
           "from": {
-            "data": {"url": "https://raw.githubusercontent.com/Christina1508/Christina_FIT3179/main/arrivals_departures_by_state.csv"},
+            "data": {"url": "arrivals_departures_by_state.csv"},
             "key": "State",
             "fields": ["Arrivals", "Total"]
           }
