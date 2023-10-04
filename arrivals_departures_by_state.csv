@@ -1,9 +1,9 @@
-﻿State,Arrivals,Departures
-New South Wales,0.4355,0.4738
-Victoria,0.2362,0.2664
-Queensland,0.2046,0.1761
-Western Australia,0.0579,0.0158
-South Australia,0.0317,0.0558
-Tasmania,0.0031,0.0031
-Australian Capital Territory,0.0005,0.0088
-Northern Territory,0.0303,0
+﻿State,Arrivals,Departures,nArrivals
+New South Wales,0.4355,0.4738,333210
+Victoria,0.2362,0.2664,180670
+Queensland,0.2046,0.1761,156550
+Western Australia,0.0579,0.0158,44320
+South Australia,0.0317,0.0558,24260
+Tasmania,0.0031,0.0031,2390
+Australian Capital Territory,0.0005,0.0088,410
+Northern Territory,0.0303,0,23180
