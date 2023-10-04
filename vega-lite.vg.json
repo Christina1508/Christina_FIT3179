@@ -5,69 +5,51 @@
   "title": "Tourism in 2022",
   "projection": {"type": "equirectangular"},
   "layer": [
-
-      {
+    {
       "data": {
         "url": "https://raw.githubusercontent.com/Christina1508/Christina_FIT3179/main/mapshaper.topojson",
-        "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
+        "format": {"type": "topojson", "feature": "ne_10m_admin_1_states_provinces"}
       },
-      "transform": [ 
-        {  
-          "lookup": "properties.BRK_NAME",
+
+      "transform": [
+        {
+          "lookup": "properties.name", 
           "from": {
-            "data": {"url": "https://raw.githubusercontent.com/Christina1508/Christina_FIT3179/main/arrivals-personal-business.csv"},
-            "key": "Country",
-            "fields": ["nTotal", "Total"]
-            
+            "data": {"url": "https://raw.githubusercontent.com/Christina1508/Christina_FIT3179/main/arrivals_departures_by_state.csv"},
+            "key": "State",
+            "fields": ["Arrivals", "Total"]
           }
         }
       ],
-      "mark": {"type": "geoshape", "stroke": "black"},
+
+      "mark": {"type": "geoshape", "stroke": "lightslategray"},
       "encoding": {
         "color": {
-          "field": "nTotal",
+          "field": "Arrivals",
           "type": "quantitative",
           "scale": {
             "type": "threshold",
-            "scheme": "lightmulti",
-            "domain": [0,0.001, 0.008, 0.01, 0.08, 0.1]
+            "scheme": "lightgreyteal",
+            "domain": [0, 0.003, 0.04, 0.01, 0.1, 0.2, 0.4, 0.3, 0.5]
           }
         },
         "tooltip": [
           {
-            "field":"properties.BRK_NAME",
+            "field":"properties.name",
             "type": "nominal",
-            "title": "Country"
+            "title": "State"
           },
           {
-            "field": "Total",
+            "field":"Total",
             "type": "quantitative",
-            "title": "No Tourists"
+            "title": "No. Tourists"
           },
           {
-            "field": "nTotal",
+            "field": "Arrivals",
             "type": "quantitative"
           }
         ]
       }
-
-    },
-
-    {
-      "data": {
-        "url": "https://raw.githubusercontent.com/Christina1508/Christina_FIT3179/main/mapshaper.topojson",
-        "format": {"type": "topojson", "feature": "ne_50m_graticules_15"}
-      },
-      "mark": {"type": "geoshape", "fill": "clear", "strokeOpacity": 0.3, "stroke": "lightslategray"}
-    },
-
-      {
-      "data": {
-        "url": "https://raw.githubusercontent.com/Christina1508/Christina_FIT3179/main/mapshaper.topojson",
-        "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
-      },
-      "mark": {"type": "geoshape", "fill": "clear", "stroke": "black"}
     }
-
   ]
 }
