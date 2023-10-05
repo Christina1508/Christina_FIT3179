@@ -1,7 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 700,
-  "height": 400,
+  "width": 500,
+  "height": 200,
+  "title": "Tourism contributing to Economy",
   "data": {"url": "expenditure_by_state.csv"},
   "params": [
     {
@@ -23,6 +24,9 @@
     "x": {"field": "Year", "type": "quantitative", 
     "axis": {"format":"d"}},
     "y": {"field": "Expend_Mil", "type": "quantitative", "title": "$ million"},
-    "color": {"value": "slategray"}
+    "color": {"value": "slategray"}, 
+    "tooltip": [
+      {"field": "Expend_Mil", "type":"quantitative", "title": "Million $"}
+    ]
   }
 }
