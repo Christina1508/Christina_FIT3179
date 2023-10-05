@@ -19,14 +19,37 @@
     {"filter": "datum.State === 'AUS' || datum.State === State_Select"}, 
     {"filter": "State_Select == null  || datum.State === State_Select"}
   ],
-  "mark": "line",
-  "encoding": {
-    "x": {"field": "Year", "type": "quantitative", 
-    "axis": {"format":"d"}},
-    "y": {"field": "Expend_Mil", "type": "quantitative", "title": "$ million"},
-    "color": {"value": "slategray"}, 
-    "tooltip": [
-      {"field": "Expend_Mil", "type":"quantitative", "title": "Million $"}
-    ]
-  }
+
+ "layer": [
+    {
+      "mark": "line",
+      "encoding": {
+        "x": {"field": "Year", "type": "quantitative", "axis": {"format": "d"}, "title": "Year"},
+        "y": {"field": "Expend_Mil", "type": "quantitative", "title": "$ million"},
+        "color": {"value": "slategray"},
+        "tooltip": [
+          {"field": "Expend_Mil", "type": "quantitative", "title": "Million $"},
+          {"field": "Year", "type": "quantitative", "title": "Year"}
+          ]
+      }
+    },
+    {
+      "mark": {"type": "circle"},
+      "encoding": {
+        "y": {"aggregate": "max", "field": "Expend_Mil", "type": "quantitative"},
+        "x": {"aggregate": {"argmax": "Expend_Mil"}, "field": "Year", "type": "quantitative"},
+        "color": {"value": "slategray"}
+      }
+    }, 
+    {
+      "mark": {"type": "text", "align": "center","dy": -5, "baseline": "bottom"},
+      "encoding": {
+        "text": {"field": "Expend_Mil", "aggregate": "max", "type": "quantitative"},
+        "y": {"aggregate": "max", "field": "Expend_Mil", "type": "quantitative"},
+        "x": {"aggregate": {"argmax": "Expend_Mil"}, "field": "Year", "type": "quantitative"},
+        "color": {"value": "slategray"}
+      }
+    }
+  ]
+  
 }
