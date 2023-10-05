@@ -1,0 +1,28 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 700,
+  "height": 400,
+  "data": {"url": "expenditure_by_state.csv"},
+  "params": [
+    {
+      "name": "State_Select",
+      "bind": {
+        "input": "select",
+        "options": ["AUS", "NSW", "VIC", "QLD", "SA", "WA", "TAS", "NT", "ACT"],
+        "labels": ["Australia", "New South Wales", "Victoria", "Queensland", "South Australia", "Western Australia", "Tasmania", "Northern Territory", "ACT"], 
+        "name": "Select State:"
+      }
+    }
+  ],
+  "transform": [ 
+    {"filter": "datum.State === 'AUS' || datum.State === State_Select"}, 
+    {"filter": "State_Select == null  || datum.State === State_Select"}
+  ],
+  "mark": "line",
+  "encoding": {
+    "x": {"field": "Year", "type": "quantitative", 
+    "axis": {"format":"d"}},
+    "y": {"field": "Expend_Mil", "type": "quantitative", "title": "$ million"},
+    "color": {"value": "slategray"}
+  }
+}
