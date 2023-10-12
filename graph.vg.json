@@ -3,7 +3,7 @@
   "width": 500,
   "height": 200,
   "title": "Tourism contributing to Economy",
-  "data": {"url": "expenditure_by_state.csv"},
+  "data": {"url": "data/expenditure_by_state.csv"},
   "params": [
     {
       "name": "State_Select",

@@ -15,7 +15,7 @@
         {
           "lookup": "properties.name", 
           "from": {
-            "data": {"url": "arrivals_departures_by_state.csv"},
+            "data": {"url": "data/arrivals_departures_by_state.csv"},
             "key": "State",
             "fields": ["Arrivals", "Total"]
           }
