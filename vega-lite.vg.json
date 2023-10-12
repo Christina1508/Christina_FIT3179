@@ -2,9 +2,27 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": 800,
   "height": 450,
-  "title": "Tourism in 2022 in Australia",
+  "title": "Tourism in 2021 in Australia",
   "projection": {"type": "equirectangular"},
+
+  "params": [
+    {
+    "name": "Year_Select",
+    "bind": {
+      "input": "select",
+      "options":  ["2021", "2020", "2019", "2018", "2017", "2016", "2015", "2014", "2013", "2012", "2011", "2010", "2009", "2008", "2007", "2006"],
+      "name": "Select Year:"
+      }
+    }
+  ],
+
+  "transform": [
+    {"filter": "datum.State != 'AUS'"},
+    {"filter": "datum.Year === '2021' || datum.Year === Year_Select"}
+  ],
+  
   "layer": [
+
     {
       "data": {
         "url": "mapshaper.topojson",
@@ -13,44 +31,31 @@
 
       "transform": [
         {
-          "lookup": "properties.name", 
+          "lookup": "properties.gns_name", 
           "from": {
-            "data": {"url": "data/arrivals_departures_by_state.csv"},
-            "key": "State",
-            "fields": ["Arrivals", "Total"]
+            "data": {"url": "data/arrivals_departures_by_state.csv"}, 
+            "key": "State", 
+            "fields": ["Ar_norm"]
           }
         }
-      ],
+      ], 
 
-      "mark": {"type": "geoshape", "stroke": "lightslategray"},
+      "mark": {"type": "geoshape", "stroke": "lightslategray"}, 
+
       "encoding": {
         "color": {
-          "field": "Arrivals",
+          "field": "Ar_norm",
           "type": "quantitative",
           "scale": {
-            "type": "threshold",
             "scheme": "lightgreyteal",
             "domain": [0, 0.003, 0.04, 0.01, 0.1, 0.2, 0.4, 0.3, 0.5]
           }
-        },
-        "tooltip": [
-          {
-            "field":"properties.name",
-            "type": "nominal",
-            "title": "State"
-          },
-          {
-            "field":"Total",
-            "type": "quantitative",
-            "title": "No. Tourists"
-          },
-          {
-            "field": "Arrivals",
-            "type": "quantitative"
-          }
-        ]
+          
+        }
       }
+
     },
+
 
     {
       "data": {
@@ -58,7 +63,7 @@
         "format": {"type": "topojson", "feature": "ne_10m_graticules_5"}
       }, 
 
-      "mark": {"type": "geoshape", "stroke": "darkslategray",  "strokeOpacity": "0.3"}
+      "mark": {"type": "geoshape", "stroke": "darkslategray",  "strokeOpacity": 0.3}
     }
       
   ]
