@@ -4,57 +4,77 @@
   "height": 450,
   "title": "Tourism in 2021 in Australia",
   "projection": {"type": "equirectangular"},
-
-  "params": [
-    {
-    "name": "Year_Select",
-    "bind": {
-      "input": "select",
-      "options":  ["2021", "2020", "2019", "2018", "2017", "2016", "2015", "2014", "2013", "2012", "2011", "2010", "2009", "2008", "2007", "2006"],
-      "name": "Select Year:"
+   "params": [
+      {
+        "name": "Type_Select",
+        "value": "Ar_norm",
+        "bind": {
+          "input": "select",
+          "options": ["Ar_norm", "Dep_norm"],
+          "labels": ["Arriving", "Departing"],
+          "name": "Type: "
+        }
+      }, 
+      {
+        "name": "Year_Select",
+        "value": 2021,
+        "bind": {
+          "input": "range",
+          "min": 2006,
+          "max": 2021,
+          "step": 1,
+          "name": "Year: "
+        }
       }
-    }
-  ],
+    ],
 
-  "transform": [
-    {"filter": "datum.State != 'AUS'"},
-    {"filter": "datum.Year === '2021' || datum.Year === Year_Select"}
-  ],
-  
   "layer": [
 
     {
       "data": {
-        "url": "mapshaper.topojson",
-        "format": {"type": "topojson", "feature": "ne_10m_admin_1_states_provinces"}
-      },
+        "url": "data/wide_arrivals_departures_by_state.csv"
+      }, 
 
       "transform": [
         {
-          "lookup": "properties.gns_name", 
+          "lookup": "State",
           "from": {
-            "data": {"url": "data/arrivals_departures_by_state.csv"}, 
-            "key": "State", 
-            "fields": ["Ar_norm"]
-          }
-        }
+            "data": 
+              {
+                "url": "mapshaper.topojson",
+                "format": {
+                  "type": "topojson",
+                  "feature": "ne_10m_admin_1_states_provinces"
+                }
+              }, 
+              "key": "properties.gns_name"
+          },
+          "as": "geo"
+        }, 
+        {"calculate": "datum[Year_Select]", "as": "arriving"},
+        {"filter": "datum.Type === Type_Select"}
       ], 
 
-      "mark": {"type": "geoshape", "stroke": "lightslategray"}, 
+      "mark": {"type": "geoshape", "stroke": "lightslategray"},
 
       "encoding": {
+        "shape": {"field": "geo", "type": "geojson"},
         "color": {
-          "field": "Ar_norm",
-          "type": "quantitative",
+          "field": "arriving",
+          "type": "quantitative", 
           "scale": {
             "scheme": "lightgreyteal",
             "domain": [0, 0.003, 0.04, 0.01, 0.1, 0.2, 0.4, 0.3, 0.5]
           }
-          
-        }
+        }, 
+        "tooltip": [
+          {"field": "arriving", "type": "quantitative"},
+          {"field": "Type", "type": "nominal"}
+        ]
       }
-
     },
+
+ 
 
 
     {
