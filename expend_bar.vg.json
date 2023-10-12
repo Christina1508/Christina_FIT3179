@@ -15,8 +15,7 @@
   ],
   "transform": [ 
     {"filter": "datum.State != 'AUS'"},
-    {"filter": "datum.Year === '2021' || datum.Year === Year_Select"}, 
-    {"filter": "Year_Select == null  || datum.Year === Year_Select"}
+    {"filter": "datum.Year === '2021' || datum.Year === Year_Select"}
   ], 
 
   "layer": [
