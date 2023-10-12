@@ -1,0 +1,45 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {"url": "https://raw.githubusercontent.com/Christina1508/Christina_FIT3179/main/data/categorical_arrivals.csv"},
+  "params": [
+    {
+      "name": "Year_Select",
+      "bind": {
+        "input": "select",
+        "options":  ["2021", "2020", "2019", "2018", "2017", "2016", "2015", "2014", "2013", "2012", "2011", "2010", "2009", "2008", "2007", "2006"],
+        "name": "Select Year:"
+      }
+    }
+  ],
+
+  "transform": [ 
+    {"calculate": "datum.Category === 'Personal' && datum.Arrivals", "as": "arr_pers"},
+    {"calculate": "datum.Category === 'Bus_Employ' && datum.Arrivals", "as": "arr_bus"},
+    {"calculate": "datum.Category === 'Education ' && datum.Arrivals", "as": "arr_ed"},
+    {"filter": "datum.Year === '2021' || datum.Year === Year_Select"}, 
+    {"filter": "Year_Select == null  || datum.Year === Year_Select"}
+  ], 
+
+
+  "vconcat": [
+    {
+      "mark": "bar",
+      "encoding": {
+        "x": {"field":"arr_pers", "type": "quantitative"}
+      }
+    },
+    {
+      "mark": "bar",
+      "encoding": {
+        "x": {"field":"arr_bus", "type": "quantitative"}
+      }
+    },
+    {
+      "mark": "bar",
+      "encoding": {
+        "x": {"field":"arr_ed", "type": "quantitative"}
+      }
+    }
+  ]
+ 
+}

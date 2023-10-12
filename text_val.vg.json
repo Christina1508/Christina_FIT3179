@@ -2,7 +2,7 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": 700,
   "height": 400,
-  "data": {"url": "expenditure_by_state.csv"},
+  "data": {"url": "https://raw.githubusercontent.com/Christina1508/Christina_FIT3179/main/data/arrivals_departures_by_state.csv"},
   "params": [
     {
       "name": "Year_Select",
@@ -14,19 +14,28 @@
     }
   ],
   "transform": [ 
-    {"filter": "datum.State != 'AUS'"},
+    {"filter": "datum.State === 'AUS'"},
     {"filter": "datum.Year === '2021' || datum.Year === Year_Select"}, 
     {"filter": "Year_Select == null  || datum.Year === Year_Select"}
   ], 
 
   "layer": [
     {
-      "mark": "bar",
+      "mark": "text",
       "encoding": {
-        "x": {"field": "State", "type": "nominal", "title": "State"},
-        "y": {"field": "Expend_Mil", "type": "quantitative", "title": "$ million"},
-        "color": {"value": "slategray"},
-        "tooltip": [{"field": "Expend_Mil", "type": "quantitative", "title": "Million $", "format":","}]
+        "text": {"field": "Arrival", "type": "quantitative"},
+        "color": {"value": "black"},  
+        "x": {"value": 100}, 
+        "y": {"value": 50}  
+      }
+    },
+    {
+      "mark": "text",
+      "encoding": {
+        "text": {"field": "Departures", "type": "quantitative"},
+        "color": {"value": "black"},  
+        "x": {"value": 200}, 
+        "y": {"value": 50}  
       }
     }
   ]
