@@ -32,7 +32,7 @@
 
     {
       "data": {
-        "url": "data/wide_arrivals_departures_by_state.csv"
+        "url": "https://raw.githubusercontent.com/Christina1508/Christina_FIT3179/main/data/wide_arrivals_departures_by_state.csv"
       }, 
 
       "transform": [
@@ -41,7 +41,7 @@
           "from": {
             "data": 
               {
-                "url": "mapshaper.topojson",
+                "url": "https://raw.githubusercontent.com/Christina1508/Christina_FIT3179/main/mapshaper.topojson",
                 "format": {
                   "type": "topojson",
                   "feature": "ne_10m_admin_1_states_provinces"
@@ -67,9 +67,11 @@
             "domain": [0, 0.003, 0.04, 0.01, 0.1, 0.2, 0.4, 0.3, 0.5]
           }
         }, 
+
         "tooltip": [
           {"field": "arriving", "type": "quantitative"},
-          {"field": "Type", "type": "nominal"}
+          {"field": "Type", "type": "nominal"}, 
+          {"field": "State", "type": "nominal"}
         ]
       }
     },
@@ -79,7 +81,7 @@
 
     {
       "data": {
-        "url": "mapshaper.topojson",
+        "url": "https://raw.githubusercontent.com/Christina1508/Christina_FIT3179/main/mapshaper.topojson",
         "format": {"type": "topojson", "feature": "ne_10m_graticules_5"}
       }, 
 
