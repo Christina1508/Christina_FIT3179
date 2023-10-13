@@ -2,20 +2,23 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": 700,
   "height": 400,
-  "data": {"url": "expenditure_by_state.csv"},
+  "data": {"url": "data/expenditure_by_state.csv"},
   "params": [
     {
       "name": "Year_Select",
+      "value": 2021,
       "bind": {
-        "input": "select",
-        "options":  ["2021", "2020", "2019", "2018", "2017", "2016", "2015", "2014", "2013", "2012", "2011", "2010", "2009", "2008", "2007", "2006"],
-        "name": "Select Year:"
+        "input": "range",
+        "min": 2006,
+        "max": 2021,
+        "step": 1,
+        "name": "Year: "
       }
     }
   ],
   "transform": [ 
     {"filter": "datum.State != 'AUS'"},
-    {"filter": "datum.Year === '2021' || datum.Year === Year_Select"}
+    {"filter": "datum.Year == Year_Select"}
   ], 
 
   "layer": [
