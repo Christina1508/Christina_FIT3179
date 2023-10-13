@@ -2,7 +2,7 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": 700,
   "height": 400,
-  "data": {"url": "data/expenditure_by_state.csv"},
+  "data": {"url": "https://raw.githubusercontent.com/Christina1508/Christina_FIT3179/main/data/expenditure_by_state.csv"},
   "params": [
     {
       "name": "Year_Select",
