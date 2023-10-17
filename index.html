@@ -1,39 +1,100 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <style>
-        .row {
-            display: flex;
-            margin-bottom: 10px;
-        }
-
-        .col-2-1 {
-          grid-column: span 2;
-        }
-
-        .col-1-1-1 {
-            grid-column: span 1;
-        }
-    </style>
+  <!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+  <script src="source.js"></script>
+  
+  <!-- CSS file -->
+  <link rel="stylesheet" type="text/css" href="css_map.css" media="all">
+  
 </head>
 <body>
-    <div class="row">
-        <div class="col-2-1" style="background-color: lightblue;">Column 1 (2:1)</div>
-        <div class="col-1-1-1" style="background-color: lightcoral;">Column 2 (1:1:1)</div>
+  
+<div> 
+
+  <!-- First row: Map, Why are tourists here-->
+  <div>
+    <h1>Australia as a Tourist Destination</h1>
+
+    <div id="choro_map"></div>    
+
+
+    <!-- why tourists-->
+    <div>
+      <div id="categories"></div>
     </div>
-    <div class="row">
-        <div class="col-1-1-1" style="background-color: lightgreen;">Column 1 (1:1:1)</div>
-        <div class="col-1-1-1" style="background-color: lightsalmon;">Column 2 (1:1:1)</div>
-        <div class="col-1-1-1" style="background-color: lightpink;">Column 3 (1:1:1)</div>
-    </div>
-    <div class="row">
-      <div class="col-2-1" style="background-color: lightblue;">Column 1 (2:1)</div>
-      <div class="col-1-1-1" style="background-color: lightcoral;">Column 2 (1:1:1)</div>
-    </div>
-    <div class="row">
-        <div class="col-1-1-1" style="background-color: lightcoral;">Column 1 (1:1:1)</div>
-        <div class="col-1-1-1" style="background-color: lightblue;">Column 2 (1:1:1)</div>
-        <div class="col-1-1-1" style="background-color: lightpink;">Column 3 (1:1:1)</div>
-    </div>
+
+
+    <script type ="text/javascript">
+      var vega = "single_bar.vg.json";
+      vegaEmbed("#categories", vega).then(function(result) {
+      }).catch(console.error);
+    </script>
+  </div>
+
+
+  <!-- Second row: horizontal bar charts-->
+  <div>
+    <h1>Australia as a Tourist Destination</h1>
+
+    <div id="choro_map"></div>
+  
+    <script type ="text/javascript">
+      var vega = "map.vg.json";
+      vegaEmbed("#choro_map", vega).then(function(result) {
+      }).catch(console.error);
+    </script>
+  
+    <div id="categories"></div>
+
+  </div>
+
+  <!-- Third Row: Australia Line charts-->
+  <div>
+    <h1>Australia as a Tourist Destination</h1>
+
+    <div id="choro_map"></div>
+  
+    <script type ="text/javascript">
+      var vega = "map.vg.json";
+      vegaEmbed("#choro_map", vega).then(function(result) {
+      }).catch(console.error);
+    </script>
+  
+    <div id="categories"></div>
+  
+    <script type ="text/javascript">
+      var vega = "single_bar.vg.json";
+      vegaEmbed("#categories", vega).then(function(result) {
+      }).catch(console.error);
+    </script>
+  </div>
+
+  <!-- Fourth Row: Financials-->
+  <div>
+    <h1>Australia as a Tourist Destination</h1>
+
+    <div id="choro_map"></div>
+  
+    <script type ="text/javascript">
+      var vega = "map.vg.json";
+      vegaEmbed("#choro_map", vega).then(function(result) {
+      }).catch(console.error);
+    </script>
+  
+    <div id="categories"></div>
+  
+    <script type ="text/javascript">
+      var vega = "single_bar.vg.json";
+      vegaEmbed("#categories", vega).then(function(result) {
+      }).catch(console.error);
+    </script>
+  </div>
+
+</div>
+
 </body>
 </html>
