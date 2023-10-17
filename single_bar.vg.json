@@ -1,5 +1,11 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 500,
+
+  "config": {
+    "padding": {"right": 40}
+    
+  },
   "data": {"url": "https://raw.githubusercontent.com/Christina1508/Christina_FIT3179/main/data/categorical_arrivals.csv"},
   "params": [
     {
@@ -13,36 +19,74 @@
         "name": "Year: "
       }
     }
+    
   ],
 
   "transform": [ 
-    {"calculate": "datum.Category == 'Personal' && datum.Arrivals", "as": "arr_pers"},
-    {"calculate": "datum.Category == 'Bus_Employ' && datum.Arrivals", "as": "arr_bus"},
-    {"calculate": "datum.Category == 'Education ' && datum.Arrivals", "as": "arr_ed"},
-    {"filter": "datum.Year == '2021' || datum.Year == Year_Select"}, 
-    {"filter": "Year_Select == null  || datum.Year == Year_Select"}
+    {"filter": "datum.Year == Year_Select"}
+    
   ], 
 
 
-  "vconcat": [
-    {
-      "mark": "bar",
-      "encoding": {
-        "x": {"field":"arr_pers", "type": "quantitative"}
+  "height": {"step": 50},
+
+  "encoding": {
+    "y": {
+      "field": "Category",
+      "type": "nominal",
+      "sort": "-x",
+      "title": null,
+      "axis": {
+        "ticks": false, 
+        "grid": false,
+        "labelAlign": "left",
+        "labelBaseline": "middle",
+        "labelPadding": -5,
+        "labelOffset": -15,
+        "titleX": 5,
+        "titleY": -5,
+        "titleAngle": 0,
+        "titleAlign": "left",
+        "domain": false
       }
     },
-    {
-      "mark": "bar",
-      "encoding": {
-        "x": {"field":"arr_bus", "type": "quantitative"}
+    "x": {
+      "field": "Arrivals",
+      "type": "quantitative",
+      "title": null,
+      "axis": {
+        "grid": false,
+        "ticks": false, 
+        "labels": false,
+        "domain": false
       }
+    }, 
+
+    "tooltip": [
+      {"field": "Arrivals"}
+    ]
+  },
+
+
+  "layer": [
+    {"mark": 
+      {"type": "bar", "yOffset": 5, "cornerRadiusEnd": 10, "height": {"band": 0.5}}
     },
+
     {
-      "mark": "bar",
+      "mark": {
+        "type": "text", 
+        "align": "left",
+        "baseline": "middle",
+        "dx": 3
+      },
       "encoding": {
-        "x": {"field":"arr_ed", "type": "quantitative"}
+        "text": { 
+          "field": "Arrivals", 
+          "type":"quantitative",
+          "format": "," 
+        }
       }
-    }
+    }  
   ]
- 
 }
