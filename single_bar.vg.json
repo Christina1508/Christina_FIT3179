@@ -40,13 +40,8 @@
         "ticks": false, 
         "grid": false,
         "labelAlign": "left",
-        "labelBaseline": "middle",
-        "labelPadding": -5,
-        "labelOffset": -15,
-        "titleX": 5,
-        "titleY": -5,
-        "titleAngle": 0,
-        "titleAlign": "left",
+        "labelBaseline": "top",
+        "labelOffset": 20,
         "domain": false
       }
     },
@@ -60,7 +55,16 @@
         "labels": false,
         "domain": false
       }
-    }, 
+    },
+
+    "fill": {
+      "field": "Category",
+      "type":"nominal",
+      "scale": {
+        "range": ["#2b7aab", "#6a5190 ", "#cc3361"]
+      }, 
+      "legend": null
+    },    
 
     "tooltip": [
       {"field": "Arrivals"}
@@ -70,7 +74,12 @@
 
   "layer": [
     {"mark": 
-      {"type": "bar", "yOffset": 5, "cornerRadiusEnd": 10, "height": {"band": 0.5}}
+      {
+        "type": "bar", 
+        "yOffset": 5, 
+        "cornerRadiusEnd": 20, 
+        "height": {"band": 0.5}
+      }
     },
 
     {
@@ -78,12 +87,13 @@
         "type": "text", 
         "align": "left",
         "baseline": "middle",
-        "dx": 3
+        "dx": 5,
+        "dy": 5
       },
       "encoding": {
         "text": { 
           "field": "Arrivals", 
-          "type":"quantitative",
+          "type":"quantitative", 
           "format": "," 
         }
       }
