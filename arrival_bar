@@ -1,0 +1,62 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {"url": "https://raw.githubusercontent.com/Christina1508/Christina_FIT3179/main/data/arrivals_departures_by_state.csv"},
+  "title": "Arrivals",
+  "params": [
+    {
+      "name": "Year_Select",
+      "value": 2021,
+      "bind": {
+        "input": "range",
+        "min": 2006,
+        "max": 2021,
+        "step": 1,
+        "name": "Year: "
+      }
+    }
+  ],
+
+  "transform": [
+    {"filter": "datum.Year == Year_Select"},
+    {"filter": "datum.State != 'AUS'"}
+  ],
+
+  "encoding": {
+    "y": {
+      "field": "State",
+      "type":"ordinal",
+      "sort": "-x"
+    }, 
+    "x": {
+      "field": "Arrival",
+      "type": "quantitative",
+      "title": "Population",
+      "scale": {"domain": [0, 10500000]}
+    },
+    "tooltip": [
+      {"field": "State", "type": "nominal"},
+      {"field": "Arrival", "type": "quantitative", "format": ","},
+      {"field": "Year", "type": "quantitative"}
+    ]
+  },
+  
+  "layer": [
+    {"mark": "bar"},
+    {
+      "mark": {
+        "type": "text", 
+        "align": "left",
+        "baseline": "middle",
+        "dx": 3
+      },
+      "encoding": {
+        "text": { 
+          "field": "Arrival", 
+          "type":"quantitative",
+          "format": ",.1s" 
+        }
+      }
+      
+    }
+  ]
+}
