@@ -2,6 +2,9 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": 500,
   "height": 200,
+  "config": {
+    "view": {"stroke": "transparent"}
+  },
   "title": "Tourism contributing to Economy",
   "data": {"url": "data/expenditure_by_state.csv"},
   "params": [

@@ -2,6 +2,9 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": 800,
   "height": 450,
+  "config": {
+    "view": {"stroke": "transparent"}
+  },
   "title": "Tourism in 2021 in Australia",
   "projection": {"type": "equirectangular"},
    "params": [

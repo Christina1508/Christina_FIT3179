@@ -2,6 +2,9 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "data": {"url": "https://raw.githubusercontent.com/Christina1508/Christina_FIT3179/main/data/arrivals_departures_by_state.csv"},
   "title": "Arrivals",
+  "config": {
+    "view": {"stroke": "transparent"}
+  },
   "params": [
     {
       "name": "Year_Select",

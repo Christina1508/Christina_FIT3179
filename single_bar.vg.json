@@ -3,8 +3,8 @@
   "width": 500,
 
   "config": {
-    "padding": {"right": 40}
-    
+    "padding": {"right": 40},
+    "view": {"stroke": "transparent"}
   },
   "data": {"url": "https://raw.githubusercontent.com/Christina1508/Christina_FIT3179/main/data/categorical_arrivals.csv"},
   "params": [
