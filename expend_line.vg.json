@@ -5,54 +5,62 @@
   "config": {
     "view": {"stroke": "transparent"}
   },
-  "title": "Tourism contributing to Economy",
-  "data": {"url": "data/expenditure_by_state.csv"},
+  "title": "Revenue from Tourism",
+  "data": {"url": "https://raw.githubusercontent.com/Christina1508/Christina_FIT3179/main/data/expenditure_by_state.csv"},
   "params": [
     {
       "name": "State_Select",
       "bind": {
         "input": "select",
-        "options": ["AUS", "NSW", "VIC", "QLD", "SA", "WA", "TAS", "NT", "ACT"],
-        "labels": ["Australia", "New South Wales", "Victoria", "Queensland", "South Australia", "Western Australia", "Tasmania", "Northern Territory", "ACT"], 
+        "options": [null, "NSW", "VIC", "QLD", "SA", "WA", "TAS", "NT", "ACT"],
+        "labels": ["Show All","New South Wales", "Victoria", "Queensland", "South Australia", "Western Australia", "Tasmania", "Northern Territory", "ACT"], 
         "name": "Select State:"
       }
     }
   ],
   "transform": [ 
-    {"filter": "datum.State === 'AUS' || datum.State === State_Select"}, 
-    {"filter": "State_Select == null  || datum.State === State_Select"}
+    {"filter":"datum.State != 'AUS'"},
+    {"filter": "State_Select==null||State_Select == datum.State "}
   ],
+
+  "encoding": {
+     "x": {"field": "Year", "type": "quantitative", "axis": {"format": "d"}, "title": "Year"},
+        "y": {"field": "Expend_Mil", "type": "quantitative", "title": "$ Million"},
+    "color": {
+      "field":"State",
+      "type":"nominal",
+      "legend":null,
+      "scale": {
+        "domain":["NSW", "VIC", "QLD", "SA", "WA", "TAS", "NT", "ACT"],
+        "range": [
+          "#003f5c",
+          "#69528e",
+          "#de763e",
+          "#008c83",
+          "#8cb869",
+          "#261452",
+          "#00568b",
+          "#d25783"
+        ]
+      }
+    }
+
+  },
 
  "layer": [
     {
-      "mark": "line",
-      "encoding": {
-        "x": {"field": "Year", "type": "quantitative", "axis": {"format": "d"}, "title": "Year"},
-        "y": {"field": "Expend_Mil", "type": "quantitative", "title": "$ million"},
-        "color": {"value": "slategray"},
+      "mark": {
+        "type": "line",
+        "point":true
+      },
+      "encoding": {      
         "tooltip": [
-          {"field": "Expend_Mil", "type": "quantitative", "title": "Million $"},
+          {"field": "Expend_Mil", "type": "quantitative", "title": "Million $", "format":","},
           {"field": "Year", "type": "quantitative", "title": "Year"}
           ]
       }
-    },
-    {
-      "mark": {"type": "circle"},
-      "encoding": {
-        "y": {"aggregate": "max", "field": "Expend_Mil", "type": "quantitative"},
-        "x": {"aggregate": {"argmax": "Expend_Mil"}, "field": "Year", "type": "quantitative"},
-        "color": {"value": "slategray"}
-      }
-    }, 
-    {
-      "mark": {"type": "text", "align": "center","dy": -5, "baseline": "bottom"},
-      "encoding": {
-        "text": {"field": "Expend_Mil", "aggregate": "max", "type": "quantitative"},
-        "y": {"aggregate": "max", "field": "Expend_Mil", "type": "quantitative"},
-        "x": {"aggregate": {"argmax": "Expend_Mil"}, "field": "Year", "type": "quantitative"},
-        "color": {"value": "slategray"}
-      }
     }
+
   ]
   
 }

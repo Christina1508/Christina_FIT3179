@@ -2,8 +2,10 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": 700,
   "height": 400,
+  "title": "Revenue from Tourism",
   "config": {
-    "view": {"stroke": "transparent"}
+    "view": {"stroke": "transparent"},
+    "axisX": {"labelAngle":0}
   },
   "data": {"url": "https://raw.githubusercontent.com/Christina1508/Christina_FIT3179/main/data/expenditure_by_state.csv"},
   "params": [
@@ -24,16 +26,46 @@
     {"filter": "datum.Year == Year_Select"}
   ], 
 
+  "encoding": {
+    "x": {"field": "State", "type": "nominal", "title": "State", "sort": "-y"},
+    "y": {"field": "Expend_Mil", "type": "quantitative", "title": "$ Million"},
+    "color": {
+      "field": "State",
+      "type": "nominal",
+      "scale": {
+        "range":[
+          "#003f5c",
+          "#69528e",
+          "#de763e",
+          "#008c83",
+          "#8cb869",
+          "#261452",
+          "#00568b",
+          "#d25783"
+        ]
+      },
+      "legend":null
+      },
+    "tooltip": [{"field": "Expend_Mil", "type": "quantitative", "title": "Million $", "format":","}]
+  },
+
   "layer": [
+    {"mark": "bar"},
     {
-      "mark": "bar",
+      "mark": {
+        "type": "text", 
+        "align": "center",
+        "baseline": "bottom",
+        "dx": 3
+      },
       "encoding": {
-        "x": {"field": "State", "type": "nominal", "title": "State"},
-        "y": {"field": "Expend_Mil", "type": "quantitative", "title": "$ million"},
-        "color": {"value": "slategray"},
-        "tooltip": [{"field": "Expend_Mil", "type": "quantitative", "title": "Million $", "format":","}]
+        "text": { 
+          "field": "Expend_Mil", 
+          "type":"quantitative",
+          "format": "$," 
+        }
       }
+      
     }
   ]
-
 }

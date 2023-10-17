@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "data": {"url": "https://raw.githubusercontent.com/Christina1508/Christina_FIT3179/main/data/arrivals_departures_by_state.csv"},
-  "title": "Number of Arrivals and Departures in Australia",
+  "title": "Number of International Tourists in Australia",
   "config": {
     "view": {"stroke": "transparent"}
   },
@@ -13,10 +13,19 @@
       "layer": [
 
         {
-          "mark": {"type":"line", "point": true, "color": "magenta"},
+          "mark": {
+            "type":"line", 
+            "point": "transparent", 
+            "color": "#fcba03"},
           "encoding": {
-            "x": {"field":"Year", "type": "quantitative", "axis": {"labels": false, "ticks": false, "title": null}}, 
-            "y": {"field": "Arrival", "type": "quantitative", "scale": {"domain": [0, 28000000]}},
+            "x": {
+              "field":"Year", 
+              "type": "quantitative", 
+              "axis": {"labels": false, "ticks": false, "title": null}}, 
+            "y": {
+              "field": "Arrival", 
+              "type": "quantitative", 
+              "scale": {"domain": [0, 28000000]}},
 
             "tooltip": [
               {"field": "Arrival", "type": "ordinal", "format": ","},
@@ -36,11 +45,11 @@
             {
               "text": {"field": "Arrival", "aggregate": "max", "type": "quantitative", "format": ","},
 
-              "y": {"aggregate": "max", "field": "Arrival", "type": "quantitative"},
+              "y": {"aggregate": "max", "field": "Arrival", "type": "quantitative", "title":"Arrivals"},
 
               "x": {"aggregate": {"argmax": "Arrival"}, "field": "Year", "type": "quantitative"},
 
-              "color": {"value": "slategray"}
+              "color": {"value": "black"}
             }
         }
 
@@ -50,11 +59,15 @@
     {
       "layer": [
         {
-          "mark": {"type":"line", "point": true, "color": "turquoise"},
+          "mark": {"type":"line", "point": "transparent", "color": "#008080"},
           "encoding": {
             "x": {"field":"Year", "type": "quantitative", 
               "axis": {"format": "d"}},
-            "y": {"field": "Departures", "type": "quantitative", "scale": {"domain": [0, 28000000]}}, 
+            "y": {
+              "field": "Departures", 
+              "type": "quantitative", 
+              "title":"Departures",
+              "scale": {"domain": [0, 28000000]}}, 
 
 
             "tooltip": [
@@ -76,9 +89,9 @@
 
               "y": {"aggregate": "max", "field": "Departures", "type": "quantitative"},
 
-              "x": {"aggregate": {"argmax": "Departures"}, "field": "Year", "type": "quantitative"},
+              "x": {"aggregate": {"argmax": "Departures"}, "field": "Year", "type": "quantitative", "title":"Year"},
 
-              "color": {"value": "slategray"}
+              "color": {"value": "black"}
             }
         }
 
