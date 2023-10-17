@@ -33,14 +33,34 @@
     "x": {
       "field": "Departures",
       "type": "quantitative",
-      "title": "Population",
-      "scale": {"domain": [0, 10500000]}
+      "title": "Number of International Departures",
+      "scale": {"domain": [0, 10500000]},
+      "axis": {
+        "format": ",s"
+      }
     },
     "tooltip": [
       {"field": "State", "type": "nominal"},
       {"field": "Departures", "type": "quantitative", "format": ","},
       {"field": "Year", "type": "quantitative"}
-    ]
+    ], 
+
+    "fill": {
+      "field": "State",
+      "type": "nominal",
+      "legend":null,
+      "scale": {"range":[
+          "#003f5c",
+          "#69528e",
+          "#de763e",
+          "#008c83",
+          "#8cb869",
+          "#261452",
+          "#00568b",
+          "#d25783"
+        ]
+      }
+    }
   },
   
   "layer": [
