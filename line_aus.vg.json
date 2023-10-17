@@ -7,30 +7,80 @@
   ],
   "vconcat": [
     {
-      "mark": {"type":"line", "point": true, "color": "magenta"},
-      "encoding": {
-        "x": {"field":"Year", "type": "quantitative", "axis": {"labels": false, "ticks": false, "title": null}}, 
-        "y": {"field": "Arrival", "type": "quantitative", "scale": {"domain": [0, 28000000]}},
+      "layer": [
 
-        "tooltip": [
-          {"field": "Arrival", "type": "ordinal", "format": ","},
-          {"field": "Year", "type": "quantitative"}
-        ]
-      }
+        {
+          "mark": {"type":"line", "point": true, "color": "magenta"},
+          "encoding": {
+            "x": {"field":"Year", "type": "quantitative", "axis": {"labels": false, "ticks": false, "title": null}}, 
+            "y": {"field": "Arrival", "type": "quantitative", "scale": {"domain": [0, 28000000]}},
+
+            "tooltip": [
+              {"field": "Arrival", "type": "ordinal", "format": ","},
+              {"field": "Year", "type": "quantitative"}
+            ]
+          }
+        },
+
+
+        {
+          "mark": 
+            {
+              "type": "text", "align": "center","dy": -5, "baseline": "bottom"
+            },
+
+          "encoding": 
+            {
+              "text": {"field": "Arrival", "aggregate": "max", "type": "quantitative", "format": ","},
+
+              "y": {"aggregate": "max", "field": "Arrival", "type": "quantitative"},
+
+              "x": {"aggregate": {"argmax": "Arrival"}, "field": "Year", "type": "quantitative"},
+
+              "color": {"value": "slategray"}
+            }
+        }
+
+      ]
     },
+
     {
-      "mark": {"type":"line", "point": true, "color": "turquoise"},
-      "encoding": {
-        "x": {"field":"Year", "type": "quantitative", 
-          "axis": {"format": "d"}},
-        "y": {"field": "Departures", "type": "quantitative", "scale": {"domain": [0, 28000000]}}, 
+      "layer": [
+        {
+          "mark": {"type":"line", "point": true, "color": "turquoise"},
+          "encoding": {
+            "x": {"field":"Year", "type": "quantitative", 
+              "axis": {"format": "d"}},
+            "y": {"field": "Departures", "type": "quantitative", "scale": {"domain": [0, 28000000]}}, 
 
 
-        "tooltip": [
-          {"field": "Departures", "type": "ordinal", "format": ","},
-          {"field": "Year", "type": "quantitative"}
-        ]
-      }
+            "tooltip": [
+              {"field": "Departures", "type": "ordinal", "format": ","},
+              {"field": "Year", "type": "quantitative"}
+            ]
+          }
+        },
+         
+        {
+          "mark": 
+            {
+              "type": "text", "align": "center","dy": -5, "baseline": "bottom"
+            },
+
+          "encoding": 
+            {
+              "text": {"field": "Departures", "aggregate": "max", "type": "quantitative", "format": ","},
+
+              "y": {"aggregate": "max", "field": "Departures", "type": "quantitative"},
+
+              "x": {"aggregate": {"argmax": "Departures"}, "field": "Year", "type": "quantitative"},
+
+              "color": {"value": "slategray"}
+            }
+        }
+
+      ]
     }
+    
   ]
 }
