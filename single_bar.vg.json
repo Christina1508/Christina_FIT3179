@@ -3,9 +3,7 @@
   "width": "300",
   "config": {
     "padding": {"right": 10},
-    "view": {"stroke": "transparent"},
-    "background": "#e4ede8"
-    
+    "view": {"stroke": "transparent"}    
   },
   "data": {"url": "https://raw.githubusercontent.com/Christina1508/Christina_FIT3179/main/data/categorical_arrivals.csv"},
   "params": [

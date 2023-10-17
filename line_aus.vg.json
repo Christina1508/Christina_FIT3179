@@ -2,8 +2,6 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "data": {"url": "https://raw.githubusercontent.com/Christina1508/Christina_FIT3179/main/data/arrivals_departures_by_state.csv"},
   "title": "Number of International Tourists in Australia",
-  "width": "700",
-  "height": "700",
   "config": {
     "view": {"stroke": "transparent"}
   },
@@ -12,13 +10,15 @@
   ],
   "vconcat": [
     {
+      "width": "350",
+      "height": "300",
       "layer": [
 
         {
           "mark": {
             "type":"line", 
             "point": "transparent", 
-            "color": "#fcba03"},
+            "color": "#c92e53"},
           "encoding": {
             "x": {
               "field":"Year", 
@@ -59,6 +59,8 @@
     },
 
     {
+      "width": "350",
+      "height": "300",
       "layer": [
         {
           "mark": {"type":"line", "point": "transparent", "color": "#008080"},

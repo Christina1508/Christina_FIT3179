@@ -30,7 +30,7 @@
         }
       },
 
-      {"name": "color_scheme", "expr": "Type_Select == 'Dep_norm' ? 'lightgreyteal' : 'lightorange'"}
+      {"name": "color_scheme", "expr": "Type_Select == 'Ar_norm' ? 'lightgreyteal' : 'lightorange'"}
   ], 
 
   "layer": [

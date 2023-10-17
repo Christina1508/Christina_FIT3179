@@ -3,8 +3,7 @@
   "width": "container",
   "config": {
     "view": {"stroke": "transparent"},
-    "padding": {"bottom": 35, "right": 20, "top": -25},
-    "background": "#e4ede8"
+    "padding": {"bottom": 35, "right": 20, "top": -25}
   },
   "data": {"url": "https://raw.githubusercontent.com/Christina1508/Christina_FIT3179/main/data/arrivals_departures_by_state.csv"},
   "params": [
