@@ -2,8 +2,7 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "data": {"url": "https://raw.githubusercontent.com/Christina1508/Christina_FIT3179/main/data/arrivals_departures_by_state.csv"},
   "title": "Arrivals",
-  "width": "container",
-  "height":"250",
+
   "config": {
     "view": {"stroke": "transparent"}
   },
@@ -21,67 +20,144 @@
     }
   ],
 
-  "transform": [
-    {"filter": "datum.Year == Year_Select"},
-    {"filter": "datum.State != 'AUS'"}
-  ],
-
-  "encoding": {
-    "y": {
-      "field": "State",
-      "type":"ordinal",
-      "sort": "-x"
-    }, 
-    "x": {
-      "field": "Arrival",
-      "type": "quantitative",
-      "title": "Number of International Arrivals",
-      "scale": {"domain": [0, 10500000]},
-      "axis": {
-        "format": ",s"
-      }
-    },
-    "tooltip": [
-      {"field": "State", "type": "nominal"},
-      {"field": "Arrival", "type": "quantitative", "format": ","},
-      {"field": "Year", "type": "quantitative"}
-    ], 
-
-    "fill": {
-      "field": "State",
-      "type": "nominal",
-      "legend":null,
-      "scale": {"range":[
-          "#003f5c",
-          "#69528e",
-          "#de763e",
-          "#008c83",
-          "#8cb869",
-          "#261452",
-          "#00568b",
-          "#d25783"
-        ]
-      }
-    }
-  },
-  
-  "layer": [
-    {"mark": "bar"},
+  "hconcat": [
     {
-      "mark": {
-        "type": "text", 
-        "align": "left",
-        "baseline": "middle",
-        "dx": 3
-      },
+      "width": "550",
+      "height":"250",
+      "transform": [
+        {"filter": "datum.Year == Year_Select"},
+        {"filter": "datum.State != 'AUS'"}
+      ],
+
       "encoding": {
-        "text": { 
-          "field": "Arrival", 
-          "type":"quantitative",
-          "format": ",.1s" 
+        "y": {
+          "field": "State",
+          "type":"ordinal",
+          "sort": "-x"
+        }, 
+        "x": {
+          "field": "Arrival",
+          "type": "quantitative",
+          "title": "Number of International Arrivals",
+          "scale": {"domain": [0, 10500000]},
+          "axis": {
+            "format": ",s"
+          }
+        },
+        "tooltip": [
+          {"field": "State", "type": "nominal"},
+          {"field": "Arrival", "type": "quantitative", "format": ","},
+          {"field": "Year", "type": "quantitative"}
+        ], 
+
+        "fill": {
+          "field": "State",
+          "type": "nominal",
+          "legend":null,
+          "scale": {"range":[
+              "#003f5c",
+              "#69528e",
+              "#de763e",
+              "#008c83",
+              "#8cb869",
+              "#261452",
+              "#00568b",
+              "#d25783"
+            ]
+          }
         }
-      }
+      },
       
+      "layer": [
+        {"mark": "bar"},
+        {
+          "mark": {
+            "type": "text", 
+            "align": "left",
+            "baseline": "middle",
+            "dx": 3
+          },
+          "encoding": {
+            "text": { 
+              "field": "Arrival", 
+              "type":"quantitative",
+              "format": ",.1s" 
+            }
+          }
+          
+        }
+      ]
+    },
+
+
+    {
+      "width": "550",
+      "height":"250",
+      "transform": [
+        {"filter": "datum.Year == Year_Select"},
+        {"filter": "datum.State != 'AUS'"}
+      ],
+
+      "encoding": {
+        "y": {
+          "field": "State",
+          "type":"ordinal",
+          "sort": "-x"
+        }, 
+        "x": {
+          "field": "Departures",
+          "type": "quantitative",
+          "title": "Number of International Departures",
+          "scale": {"domain": [0, 10500000]},
+          "axis": {
+            "format": ",s"
+          }
+        },
+        "tooltip": [
+          {"field": "State", "type": "nominal"},
+          {"field": "Departures", "type": "quantitative", "format": ","},
+          {"field": "Year", "type": "quantitative"}
+        ], 
+
+        "fill": {
+          "field": "State",
+          "type": "nominal",
+          "legend":null,
+          "scale": {"range":[
+              "#003f5c",
+              "#69528e",
+              "#de763e",
+              "#008c83",
+              "#8cb869",
+              "#261452",
+              "#00568b",
+              "#d25783"
+            ]
+          }
+        }
+      },
+      
+      "layer": [
+        {"mark": "bar"},
+        {
+          "mark": {
+            "type": "text", 
+            "align": "left",
+            "baseline": "middle",
+            "dx": 3
+          },
+          "encoding": {
+            "text": { 
+              "field": "Departures", 
+              "type":"quantitative",
+              "format": ",.1s" 
+            }
+          }
+          
+        }
+      ]
     }
   ]
+
+  
 }

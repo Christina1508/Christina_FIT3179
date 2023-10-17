@@ -56,7 +56,7 @@ h1 {
 
 .hori_bar {
   display: table-cell; 
-  width: 45%
+  width: 100%
   
 }
 
@@ -67,4 +67,8 @@ h1 {
 .row3col1 {
   padding-left: 20px;
   display: flex; flex-direction: column; height: 100%; width: 40%;
+}
+
+.endsection {
+  padding-bottom: 100px;
 }

@@ -13,10 +13,6 @@ var vega = "arrival_bar.vg.json";
 vegaEmbed("#arrival", vega).then(function(result) {
 }).catch(console.error);
 
-var vega = "departure_bar.vg.json";
-vegaEmbed("#dept", vega).then(function(result) {
-}).catch(console.error);
-
 var vega = "text_val.vg.json";
 vegaEmbed("#text", vega).then(function(result) {
 }).catch(console.error);
