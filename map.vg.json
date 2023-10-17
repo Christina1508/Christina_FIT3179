@@ -1,5 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 600,
+  "height": 300,
   "config": {
     "view": {"stroke": "transparent"}
   },
@@ -63,7 +65,7 @@
         "color":{
           "field": "theVal",
           "type": "quantitative",
-          "legend": null,
+          "legend": {"title":"Ratio Tourists"},
           "scale": {
             "scheme": {"expr": "color_scheme"}
           }

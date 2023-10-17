@@ -1,9 +1,11 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-
+  "width": "500",
   "config": {
-    "padding": {"right": 40},
-    "view": {"stroke": "transparent"}
+    "padding": {"right": 10},
+    "view": {"stroke": "transparent"},
+    "background": "#e4ede8"
+    
   },
   "data": {"url": "https://raw.githubusercontent.com/Christina1508/Christina_FIT3179/main/data/categorical_arrivals.csv"},
   "params": [
