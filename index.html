@@ -13,21 +13,21 @@
 <body>
   
 <div> 
- <h1>Homework W10</h1>
+ <h1>Australia as a Tourist Destination</h1>
 
-  <div id="vega_map"></div>
+  <div id="choro_map"></div>
 
   <script type ="text/javascript">
-    var vega = "vega-lite.vg.json";
-    vegaEmbed("#vega_map", vega).then(function(result) {
+    var vega = "map.vg.json";
+    vegaEmbed("#choro_map", vega).then(function(result) {
     }).catch(console.error);
   </script>
 
-  <div id="graph2"></div>
+  <div id="categories"></div>
 
   <script type ="text/javascript">
-    var vega = "graph.vg.json";
-    vegaEmbed("#graph2", vega).then(function(result) {
+    var vega = "single_bar.vg.json";
+    vegaEmbed("#categories", vega).then(function(result) {
     }).catch(console.error);
   </script>
 
