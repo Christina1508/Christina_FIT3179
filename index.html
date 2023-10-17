@@ -13,24 +13,28 @@
 <body>
   
 <div> 
- <h1>Australia as a Tourist Destination</h1>
+  <!-- First row: Map, Why are tourists here-->
+  <div>
+    <h1>Australia as a Tourist Destination</h1>
 
-  <div id="choro_map"></div>
-
-  <script type ="text/javascript">
-    var vega = "map.vg.json";
-    vegaEmbed("#choro_map", vega).then(function(result) {
-    }).catch(console.error);
-  </script>
-
-  <div id="categories"></div>
-
-  <script type ="text/javascript">
-    var vega = "single_bar.vg.json";
-    vegaEmbed("#categories", vega).then(function(result) {
-    }).catch(console.error);
-  </script>
-
+    <div id="choro_map"></div>
+  
+    <script type ="text/javascript">
+      var vega = "map.vg.json";
+      vegaEmbed("#choro_map", vega).then(function(result) {
+      }).catch(console.error);
+    </script>
+  
+    <div id="categories"></div>
+  
+    <script type ="text/javascript">
+      var vega = "single_bar.vg.json";
+      vegaEmbed("#categories", vega).then(function(result) {
+      }).catch(console.error);
+    </script>
+  
+  
+  </div>
 
 </div>
 
