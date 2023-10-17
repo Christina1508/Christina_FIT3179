@@ -3,6 +3,7 @@
   "data": {"url": "https://raw.githubusercontent.com/Christina1508/Christina_FIT3179/main/data/arrivals_departures_by_state.csv"},
   "title": "Arrivals",
   "width": "container",
+  "height":"250",
   "config": {
     "view": {"stroke": "transparent"}
   },
