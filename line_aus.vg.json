@@ -1,0 +1,36 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {"url": "https://raw.githubusercontent.com/Christina1508/Christina_FIT3179/main/data/arrivals_departures_by_state.csv"},
+  "title": "Number of Arrivals and Departures in Australia",
+  "transform": [
+    {"filter": "datum.State == 'AUS'"}
+  ],
+  "vconcat": [
+    {
+      "mark": {"type":"line", "point": true, "color": "magenta"},
+      "encoding": {
+        "x": {"field":"Year", "type": "quantitative", "axis": {"labels": false, "ticks": false, "title": null}}, 
+        "y": {"field": "Arrival", "type": "quantitative", "scale": {"domain": [0, 28000000]}},
+
+        "tooltip": [
+          {"field": "Arrival", "type": "ordinal", "format": ","},
+          {"field": "Year", "type": "quantitative"}
+        ]
+      }
+    },
+    {
+      "mark": {"type":"line", "point": true, "color": "turquoise"},
+      "encoding": {
+        "x": {"field":"Year", "type": "quantitative", 
+          "axis": {"format": "d"}},
+        "y": {"field": "Departures", "type": "quantitative", "scale": {"domain": [0, 28000000]}}, 
+
+
+        "tooltip": [
+          {"field": "Departures", "type": "ordinal", "format": ","},
+          {"field": "Year", "type": "quantitative"}
+        ]
+      }
+    }
+  ]
+}
