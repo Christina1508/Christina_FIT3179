@@ -1,11 +1,14 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 700,
-  "height": 400,
+  "config": {
+    "view": {"stroke": "transparent"},
+    "padding": {"bottom": 35, "right": 20}
+  },
   "data": {"url": "https://raw.githubusercontent.com/Christina1508/Christina_FIT3179/main/data/arrivals_departures_by_state.csv"},
   "params": [
     {
       "name": "Year_Select",
+      "value": "2021",
       "bind": {
         "input": "select",
         "options":  ["2021", "2020", "2019", "2018", "2017", "2016", "2015", "2014", "2013", "2012", "2011", "2010", "2009", "2008", "2007", "2006"],
@@ -14,25 +17,24 @@
     }
   ],
   "transform": [ 
-    {"filter": "datum.State === 'AUS'"},
-    {"filter": "datum.Year === '2021' || datum.Year === Year_Select"}, 
-    {"filter": "Year_Select == null  || datum.Year === Year_Select"}
+    {"filter": "datum.State == 'AUS'"},
+    {"filter": "datum.Year == Year_Select"}
   ], 
 
   "layer": [
     {
       "mark": "text",
       "encoding": {
-        "text": {"field": "Arrival", "type": "quantitative"},
+        "text": {"field": "Arrival", "type": "quantitative", "format":","},
         "color": {"value": "black"},  
-        "x": {"value": 100}, 
+        "x": {"value": 50}, 
         "y": {"value": 50}  
       }
     },
     {
       "mark": "text",
       "encoding": {
-        "text": {"field": "Departures", "type": "quantitative"},
+        "text": {"field": "Departures", "type": "quantitative","format":","},
         "color": {"value": "black"},  
         "x": {"value": 200}, 
         "y": {"value": 50}  
