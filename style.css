@@ -50,3 +50,10 @@ h1 {
   background-color: #e4ede8;
   border-top-left-radius: 50px;
 }
+
+.rounded_planes {
+  border-top-right-radius: 50px;
+  background-color: #e4ede8;
+  padding-bottom: 20px;
+  padding-top: 20px;
+}
