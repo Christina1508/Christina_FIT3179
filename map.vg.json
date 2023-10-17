@@ -1,13 +1,11 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 800,
-  "height": 450,
   "config": {
     "view": {"stroke": "transparent"}
   },
   "title": "Tourism in 2021 in Australia",
   "projection": {"type": "equirectangular"},
-   "params": [
+  "params": [
       {
         "name": "Type_Select",
         "value": "Ar_norm",
@@ -28,8 +26,10 @@
           "step": 1,
           "name": "Year: "
         }
-      }
-    ],
+      },
+
+      {"name": "color_scheme", "expr": "Type_Select === 'Dep_norm' ? 'lightgreyteal' : 'lightorange'"}
+  ],
 
   "layer": [
 
@@ -66,8 +66,7 @@
           "field": "arriving",
           "type": "quantitative", 
           "scale": {
-            "scheme": "lightgreyteal",
-            "domain": [0, 0.003, 0.04, 0.01, 0.1, 0.2, 0.4, 0.3, 0.5]
+            "scheme": {"expr": "color_scheme"}
           }
         }, 
 
@@ -77,18 +76,6 @@
           {"field": "State", "type": "nominal"}
         ]
       }
-    },
-
- 
-
-
-    {
-      "data": {
-        "url": "https://raw.githubusercontent.com/Christina1508/Christina_FIT3179/main/mapshaper.topojson",
-        "format": {"type": "topojson", "feature": "ne_10m_graticules_5"}
-      }, 
-
-      "mark": {"type": "geoshape", "stroke": "darkslategray",  "strokeOpacity": 0.3}
     }
       
   ]
