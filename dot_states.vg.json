@@ -1,0 +1,81 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Comparing Tourism Rates to 2021 for Major States",
+  "data": {
+    "url": "https://raw.githubusercontent.com/Christina1508/Christina_FIT3179/main/data/arrivals_departures_by_state.csv"
+  },
+  "params": [
+    {"name": "Latest_Year", "value": 2021},
+    {
+      "name": "Year_Select",
+      "value": 2006,
+      "bind": {
+        "input": "range",
+        "min": 2006,
+        "max": 2020,
+        "step": 1,
+        "name": "Year: "
+      }
+    },
+    {
+      "name": "Type_Select",
+      "value": "Arrival",
+      "bind": {
+        "input": "select",
+        "options": ["Arrival", "Departures"],
+        "name": "Type: "
+      }
+    },
+    {
+      "name": "color_scheme",
+      "expr": "Type_Select == 'Arrival' ? 'lightgreyteal' : 'lightorange'"
+    }
+  ],
+  "transform": [
+    {"filter": {"field": "State", "oneOf": ["NSW", "Vic", "Qld", "WA"]}},
+    {"filter": "datum.Year == Year_Select || datum.Year == '2021'"},
+    {"calculate": "datum[Type_Select]", "as": "Vals"}
+  ],
+  "encoding": {
+    "x": {
+      "field": "Vals",
+      "type": "quantitative",
+      "title": "Number of Tourists",
+      "axis": {"format": "s"}
+    },
+    "y": {
+      "field": "State",
+      "type": "nominal",
+      "title": "State",
+      "axis": {"offset": 5, "ticks": false, "minExtent": 0, "domain": false}
+    },
+    "tooltip": [
+      {"field": "State", "type": "nominal"},
+      {
+        "field": "Vals",
+        "type": "quantitative",
+        "format": ",",
+        "title": "Count"
+      },
+      {"field": "Year", "type": "ordinal"}
+    ]
+  },
+  "layer": [
+    {
+      "mark": "line",
+      "encoding": {"detail": {"field": "State", "type": "nominal"}}
+    },
+    {
+      "mark": {"type": "point", "filled": true},
+      "encoding": {
+        "color": {
+          "field": "Year",
+          "scale": {"scheme": {"expr": "color_scheme"}},
+          "title": "Year"
+        },
+        "size": {"value": 100},
+        "opacity": {"value": 1}
+      }
+    }
+  ]
+}

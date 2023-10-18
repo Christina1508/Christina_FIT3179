@@ -5,7 +5,7 @@
   "config": {
     "view": {"stroke": "transparent"}
   },
-  "title": "International Arrivals and Departures",
+  "title": "Ratio of Tourism per State",
   "projection": {"type": "equirectangular"},
   "params": [
       {

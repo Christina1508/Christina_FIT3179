@@ -63,11 +63,7 @@
         "range": ["#2b7aab", "#6a5190 ", "#cc3361"]
       }, 
       "legend": null
-    },    
-
-    "tooltip": [
-      {"field": "Arrivals"}
-    ]
+    }
   },
 
 

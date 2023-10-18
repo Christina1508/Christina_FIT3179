@@ -1,11 +1,12 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": "container",
   "config": {
     "view": {"stroke": "transparent"},
-    "padding": {"bottom": 35, "right": 20, "top": -25}
+    "padding": {"bottom": 35, "right": 20, "top": -40}
   },
-  "data": {"url": "https://raw.githubusercontent.com/Christina1508/Christina_FIT3179/main/data/arrivals_departures_by_state.csv"},
+  "data": {
+    "url": "https://raw.githubusercontent.com/Christina1508/Christina_FIT3179/main/data/arrivals_departures_by_state.csv"
+  },
   "params": [
     {
       "name": "Year_Select",
@@ -19,30 +20,37 @@
       }
     }
   ],
-  "transform": [ 
+  "transform": [
     {"filter": "datum.State == 'AUS'"},
     {"filter": "datum.Year == Year_Select"}
-  ], 
-
+  ],
   "layer": [
     {
-      "mark": "text",
+      "mark": {
+        "type": "text",
+        "fontWeight":"bolder",
+        "fontSize": 15        
+      },
       "encoding": {
-        "text": {"field": "Arrival", "type": "quantitative", "format":","},
-        "color": {"value": "black"},  
-        "x": {"value": 50}, 
-        "y": {"value": 50}  
+        "text": {"field": "Arrival", "type": "quantitative", "format": ","},
+        "color": {"value": " #4483d5"},  
+        "x": {"value": 50},
+        "y": {"value": 50}
       }
     },
     {
-      "mark": "text",
+      "mark": {
+        "type": "text",
+        "fontWeight":"bolder",
+        "fontSize": 15        
+      },
+      
       "encoding": {
-        "text": {"field": "Departures", "type": "quantitative","format":","},
-        "color": {"value": "black"},  
-        "x": {"value": 200}, 
-        "y": {"value": 50}  
+        "text": {"field": "Departures", "type": "quantitative", "format": ","}, 
+        "color": {"value": "#e47c44"},  
+        "x": {"value": 150},
+        "y": {"value": 50}
       }
     }
   ]
-
 }

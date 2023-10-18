@@ -1,106 +1,195 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "data": {"url": "https://raw.githubusercontent.com/Christina1508/Christina_FIT3179/main/data/arrivals_departures_by_state.csv"},
-  "title": "Number of International Tourists in Australia",
-  "config": {
-    "view": {"stroke": "transparent"}
+  "data": {
+    "url": "https://raw.githubusercontent.com/Christina1508/Christina_FIT3179/main/data/arrivals_departures_by_state.csv"
   },
-  "transform": [
-    {"filter": "datum.State == 'AUS'"}
-  ],
+  "title": "Tourism Movement in Australia 2006-2021",
+  "config": {"view": {"stroke": "transparent"}},
+  "spacing": 0,
+  "transform": [{"filter": "datum.State == 'AUS'"}],
   "vconcat": [
     {
-      "width": "350",
-      "height": "300",
+      "width": 500,
       "layer": [
-
         {
-          "mark": {
-            "type":"line", 
-            "point": "transparent", 
-            "color": "#c92e53"},
+          "params": [
+            {
+              "name": "index",
+              "value": [{"x": 2021}],
+              "select": {
+                "type": "point",
+                "encodings": ["x"],
+                "on": "mouseover",
+                "nearest": true
+              }
+            }
+          ],
+          "mark": "point",
           "encoding": {
             "x": {
-              "field":"Year", 
-              "type": "quantitative", 
-              "axis": {"labels": false, "ticks": false, "title": null}}, 
-            "y": {
-              "field": "Arrival", 
-              "type": "quantitative", 
-              "scale": {"domain": [0, 28000000]}},
-
-            "tooltip": [
-              {"field": "Arrival", "type": "ordinal", "format": ","},
-              {"field": "Year", "type": "quantitative"}
-            ]
+              "field": "Year",
+              "type": "quantitative",
+              "axis": {"format": "d" },
+              "scale": {"domain": [2006, 2021]}
+            },
+            "opacity": {"value": 0}
           }
         },
-
-
         {
-          "mark": 
-            {
-              "type": "text", "align": "center","dy": -5, "baseline": "bottom"
+          "mark": "line",
+          "encoding": {
+            "x": {
+              "field": "Year",
+              "type": "quantitative",
+              "scale": {"domain": [2006, 2021]},
+              "axis": {"title": null, "labels": false, "ticks": false}
             },
-
-          "encoding": 
+            "y": {
+              "field": "Arrival",
+              "type": "quantitative",
+              "axis": {"format": ",s", "title": "Number of Arriving Tourists"}
+            },
+            "color": {"value": "#4483d5"}
+          }
+        },
+        {
+          "transform": [{"filter": {"param": "index"}}],
+          "encoding": {
+            "x": {
+              "field": "Year",
+              "type": "quantitative",
+              "scale": {"domain": [2006, 2021]}
+            },
+            "color": {"value": "firebrick"}
+          },
+          "layer": [
+            {"mark": {"type": "rule", "strokeWidth": 0.5}},
             {
-              "text": {"field": "Arrival", "aggregate": "max", "type": "quantitative", "format": ","},
-
-              "y": {"aggregate": "max", "field": "Arrival", "type": "quantitative", "title":"Arrivals"},
-
-              "x": {"aggregate": {"argmax": "Arrival"}, "field": "Year", "type": "quantitative"},
-
-              "color": {"value": "black"}
+              "transform": [
+                {"filter": " datum.Year == data('data_2')[0]['Year'] "}
+              ],
+              "mark": {
+                "type": "text",
+                "align": "left",
+                "dx": 5,
+                "fontWeight": 100
+              },
+              "encoding": {
+                "text": {"field": "Arrival", "format": ","},
+                "y": {"value": 170},
+                "color": {"value": "#4483d5"}
+              }
+            },
+            {
+              "transform": [
+                {"filter": " datum.Year == data('data_2')[0]['Year'] "}
+              ],
+              "mark": {
+                "type": "text",
+                "align": "left",
+                "dx": 5,
+                "fontWeight": 100
+              },
+              "encoding": {
+                "text": {"field": "Year", "format": "d"},
+                "y": {"value": 185},
+                "color": {"value": "black"}
+              }
             }
+          ]
         }
-
       ]
     },
-
     {
-      "width": "350",
-      "height": "300",
+      "width": 500,
       "layer": [
         {
-          "mark": {"type":"line", "point": "transparent", "color": "#008080"},
+          "params": [
+            {
+              "name": "index",
+              "value": [{"x": 2021}],
+              "select": {
+                "type": "point",
+                "encodings": ["x"],
+                "on": "mouseover",
+                "nearest": true
+              }
+            }
+          ],
+          "mark": "point",
           "encoding": {
-            "x": {"field":"Year", "type": "quantitative", 
-              "axis": {"format": "d"}},
-            "y": {
-              "field": "Departures", 
-              "type": "quantitative", 
-              "title":"Departures",
-              "scale": {"domain": [0, 28000000]}}, 
-
-
-            "tooltip": [
-              {"field": "Departures", "type": "ordinal", "format": ","},
-              {"field": "Year", "type": "quantitative"}
-            ]
+            "x": {
+              "field": "Year",
+              "type": "quantitative",
+              "axis": {"format": "d"},
+              "scale": {"domain": [2006, 2021]}
+            },
+            "opacity": {"value": 0}
           }
         },
-         
         {
-          "mark": 
-            {
-              "type": "text", "align": "center","dy": -5, "baseline": "bottom"
+          "mark": "line",
+          "encoding": {
+            "x": {
+              "field": "Year",
+              "type": "quantitative",
+              "scale": {"domain": [2006, 2021]}
             },
-
-          "encoding": 
+            "y": {
+              "field": "Departures",
+              "type": "quantitative",
+              "axis": {"format": ",s", "title": "Number of Departing Tourists"}
+            },
+            "color": {"value": "#e47c44"}
+          }
+        },
+        {
+          "transform": [{"filter": {"param": "index"}}],
+          "encoding": {
+            "x": {
+              "field": "Year",
+              "type": "quantitative",
+              "scale": {"domain": [2006, 2021]}
+            },
+            "color": {"value": "firebrick"}
+          },
+          "layer": [
+            {"mark": {"type": "rule", "strokeWidth": 0.5}},
             {
-              "text": {"field": "Departures", "aggregate": "max", "type": "quantitative", "format": ","},
-
-              "y": {"aggregate": "max", "field": "Departures", "type": "quantitative"},
-
-              "x": {"aggregate": {"argmax": "Departures"}, "field": "Year", "type": "quantitative", "title":"Year"},
-
-              "color": {"value": "black"}
+              "transform": [
+                {"filter": " datum.Year == data('data_2')[0]['Year'] "}
+              ],
+              "mark": {
+                "type": "text",
+                "align": "left",
+                "dx": 5,
+                "fontWeight": 100
+              },
+              "encoding": {
+                "text": {"field": "Departures", "format": ","},
+                "y": {"value": 170},
+                "color": {"value": "#e47c44"}
+              }
+            },
+            {
+              "transform": [
+                {"filter": " datum.Year == data('data_2')[0]['Year'] "}
+              ],
+              "mark": {
+                "type": "text",
+                "align": "left",
+                "dx": 5,
+                "fontWeight": 100
+              },
+              "encoding": {
+                "text": {"field": "Year", "format": "d"},
+                "y": {"value": 185},
+                "color": {"value": "black"}
+              }
             }
+          ]
         }
-
       ]
     }
-    
   ]
 }

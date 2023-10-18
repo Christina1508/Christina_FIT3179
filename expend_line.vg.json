@@ -4,7 +4,7 @@
   "config": {
     "view": {"stroke": "transparent"}
   },
-  "title": "Revenue from Tourism",
+  "title": "Australian States Revenue from Tourism per year",
   "data": {"url": "https://raw.githubusercontent.com/Christina1508/Christina_FIT3179/main/data/expenditure_by_state.csv"},
   "params": [
     {
@@ -13,7 +13,7 @@
         "input": "select",
         "options": [null, "NSW", "VIC", "QLD", "SA", "WA", "TAS", "NT", "ACT"],
         "labels": ["Show All","New South Wales", "Victoria", "Queensland", "South Australia", "Western Australia", "Tasmania", "Northern Territory", "ACT"], 
-        "name": "Select State:"
+        "name": "Select State:  "
       }
     }
   ],

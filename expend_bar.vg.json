@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": "container",
-  "title": "Revenue from Tourism",
+  "title": "Revenue from Tourism by Australian States ",
   "config": {
     "view": {"stroke": "transparent"},
     "axisX": {"labelAngle":0}
